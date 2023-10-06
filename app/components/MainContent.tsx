@@ -13,6 +13,8 @@ const MainContent = () => {
 
     useEffect(() => {
         filterBooks();
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [books, selectedFormat, selectedLanguage, selectedSubject]);
 
     const handleSearch = async () => {
@@ -54,7 +56,7 @@ const MainContent = () => {
         if (selectedSubject) {
             const selectedSubjectLower = selectedSubject.toLowerCase();
             filtered = filtered.filter((book) =>
-                book.subjects.some((subject) =>
+                book.subjects.some((subject: string) =>
                     subject.toLowerCase().includes(selectedSubjectLower)
                 )
             );
@@ -132,7 +134,7 @@ const MainContent = () => {
                             >
                                 <h3 className="text-lg font-semibold">{book.title}</h3>
                                 <p className="text-sm text-gray-600">
-                                    {book.authors.map((author) => author.name).join(', ')}
+                                    {book.authors.map((author: any) => author.name).join(', ')}
                                 </p>
                             </div>
                         ))
